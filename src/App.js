@@ -14,6 +14,10 @@ const PLAYERS = {
   aza: 0,
   yuan: 0
 }
+const SCORE = {
+  mattAndYuan: 0,
+  samAndAza: 0
+}
 
 function App() {
   // Determine whether to show truth or lie (random)
@@ -84,15 +88,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="Team-score">
-          <p className="Team-score-header">Matt & Yuan</p>
-          <p>0</p>
-        </div>
         <img src={logo} alt="logo" />
-        <div className="Team-score">
-          <p className="Team-score-header">Sam & Aza</p>
-          <p>0</p>
-        </div>
       </header>
       <Container className="Game-container">
         <Col md={4}>

@@ -3,7 +3,7 @@ import { Row, Button } from 'react-bootstrap';
 export const Statement = (props) => {
   const { statement, end } = props;
 
-  if (!end) {
+  if (!end && statement) {
     return (
       <div className="Statement">
         <Row>
