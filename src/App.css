@@ -48,6 +48,10 @@
   color: white;
 }
 
+.Players .active {
+  background-color: yellow;
+}
+
 .Statement {
   width: 100%;
   margin: 16px;

@@ -131,6 +131,7 @@ function App() {
 
       // If there's no next player, end the game
     } else {
+      setPlayer(null);
       setStatement(null);
       setEnd(true);
       setFinalScore(calculateScore(LEDGER));
@@ -151,10 +152,10 @@ function App() {
       <Container className="Game-container">
         <Col md={4}>
           <Row className="Players">
-            <div>Matt</div>
-            <div>Yuan</div>
-            <div>Sam</div>
-            <div>Aza</div>
+            <div className={player === 'matt' ? 'active' : ''}>Matt</div>
+            <div className={player === 'yuan' ? 'active' : ''}>Yuan</div>
+            <div className={player === 'sam' ? 'active' : ''}>Sam</div>
+            <div className={player === 'aza' ? 'active' : ''}>Aza</div>
           </Row>
         </Col>
         <Col md={8}>
