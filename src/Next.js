@@ -2,7 +2,7 @@ import { Row, Button } from 'react-bootstrap';
 import { useState } from 'react';
 
 export const Next = (props) => {
-  const { onFinishedTurn, end } = props;
+  const { onNext, end, score } = props;
   const [start, setStart] = useState(true);
   const [reveal, setReveal] = useState(false);
 
@@ -18,12 +18,12 @@ export const Next = (props) => {
 
   const onClick = () => {
     if (start) {
-      onFinishedTurn();
+      onNext();
       setStart(false);
     } else if (end) {
       setReveal(true);
     } else {
-      onFinishedTurn();
+      onNext();
     }
   }
 
@@ -32,11 +32,11 @@ export const Next = (props) => {
       <div>
         <div className="Team-score">
           <p className="Team-score-header">Matt & Yuan</p>
-          <p>0</p>
+          <p>{score.mattAndYuan}</p>
         </div>
         <div className="Team-score">
           <p className="Team-score-header">Sam & Aza</p>
-          <p>0</p>
+          <p>{score.samAndAza}</p>
         </div>
       </div>
     )

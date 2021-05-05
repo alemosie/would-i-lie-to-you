@@ -14,6 +14,13 @@ const PLAYERS = {
   aza: 0,
   yuan: 0
 }
+const LEDGER = {
+  // true is 1 point for your team, false is 1 point for other team
+  matt: [],
+  sam: [],
+  aza: [],
+  yuan: [],
+}
 const SCORE = {
   mattAndYuan: 0,
   samAndAza: 0
@@ -60,26 +67,59 @@ function App() {
     }
   }
 
+  // Manage scores
+  const [finalScore, setFinalScore] = useState(SCORE);
+  const calculateScore = (ledger) => {
+    let score = { ...SCORE };
+    const getNumCorrect = (val) => val === true;
+    const getNumIncorrect = (val) => val === false;
+
+    Object.keys(ledger).forEach((player) => {
+      const correct = ledger[player].filter(getNumCorrect).length;
+      const incorrect = ledger[player].filter(getNumIncorrect).length;
+      if (['matt', 'yuan'].includes(player)) {
+        score.mattAndYuan += correct;
+        score.samAndAza += incorrect;
+      } else if (['sam', 'aza'].includes(player)) {
+        score.mattAndYuan += incorrect;
+        score.samAndAza += correct;
+      }
+    })
+    return score;
+  }
+
   // Manage end state
   const [end, setEnd] = useState(false);
 
-  const onFinishedTurn = () => {
-    // When the turn is done, get next player and statement
-    const statementType = getStatementType();
-
-    const player = getPlayer(statementType);
+  const onNext = () => {
+    // Update ledger
+    // Answer is true (truth) or false (lie)
     if (player) {
-      // There's a valid player to continue
-      PLAYERS[player] += 1;
-      setPlayer(player);
+      const answer = 'truth';
+      const correctAnswer = !statements[player][answer].includes(statement);
+      LEDGER[player].push(correctAnswer);
+    }
 
-      const statement = getStatement(player, statementType);
-      setStatement(statement);
+    // Get next turn's player and statement
+    const nextStatementType = getStatementType();
+    const nextPlayer = getPlayer(nextStatementType);
+
+    // There's a valid player to continue
+    if (nextPlayer) {
+      PLAYERS[nextPlayer] += 1;
+      setPlayer(nextPlayer);
+
+      const nextStatement = getStatement(nextPlayer, nextStatementType);
+      setStatement(nextStatement);
+
+      // If there's no next player, end the game
     } else {
-      // Finish the game
       setEnd(true);
-      console.log(remainingStatements)
-      console.log(PLAYERS)
+      setFinalScore(calculateScore(LEDGER));
+
+      console.log('statements', remainingStatements)
+      console.log('turns', PLAYERS);
+      console.log('ledger', LEDGER);
     }
 
   }
@@ -101,7 +141,7 @@ function App() {
         </Col>
         <Col md={8}>
           < Statement statement={statement} end={end} />
-          < Next onFinishedTurn={onFinishedTurn} end={end} />
+          < Next onNext={onNext} end={end} score={finalScore} />
         </Col>
       </Container>
     </div>
