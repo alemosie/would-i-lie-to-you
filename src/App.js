@@ -150,17 +150,21 @@ function App() {
         <img src={logo} alt="logo" />
       </header>
       <Container className="Game-container">
-        <Col md={4}>
-          <Row className="Players">
+        <Col md={2}>
+          <Row className="Players Team-1">
             <div className={player === 'matt' ? 'active' : ''}>Matt</div>
             <div className={player === 'yuan' ? 'active' : ''}>Yuan</div>
-            <div className={player === 'sam' ? 'active' : ''}>Sam</div>
-            <div className={player === 'aza' ? 'active' : ''}>Aza</div>
           </Row>
         </Col>
         <Col md={8}>
           < Statement statement={statement} answer={answer} correct={correct} end={end} />
           < Next onNext={onNext} statement={statement} answer={answer} handleAnswer={handleAnswer} end={end} score={finalScore} />
+        </Col>
+        <Col md={2}>
+          <Row className="Players Team-2">
+            <div className={player === 'sam' ? 'active' : ''}>Sam</div>
+            <div className={player === 'aza' ? 'active' : ''}>Aza</div>
+          </Row>
         </Col>
       </Container>
     </div>

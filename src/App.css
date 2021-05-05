@@ -1,3 +1,7 @@
+/* Team Purple: rgb 166 41 158 */
+/* Team Green: rgb 44 208 57 */
+/* Host Turquoise: rgb 72 157 177 */
+
 .App {
   text-align: center;
 }
@@ -39,17 +43,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
   height: 100px;
-  margin: 8px;
-  padding: 16px;
   width: 290px;
-  background-color: red;
-  font-size: calc(10px + 2vmin);
+
   color: white;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+  font-size: 35px;
+
+  margin: 8px 8px 20px 8px;
+  padding: 16px;
 }
 
-.Players .active {
-  background-color: yellow;
+.Players div.active {
+  transform: rotate(-2deg);
+  border: 8px solid gold;
+  padding: 32px;
+}
+
+.Team-1 div {
+  background-color: rgb(166 41 158);
+}
+.Team-2 div {
+  background-color: rgb(44 208 57);
 }
 
 .Statement {
