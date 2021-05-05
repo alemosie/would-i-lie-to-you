@@ -1,19 +1,31 @@
-import { Row, Button } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 export const Statement = (props) => {
-  const { statement, end } = props;
+  const { statement, answer, correct, end } = props;
 
-  if (!end && statement) {
+  const getCorrectText = () => {
+    if (correct) {
+      return 'It was correct!'
+    } else if (correct === false) {
+      return 'It was incorrect!'
+    } else {
+      return 'It is null :('
+    }
+  }
+
+  if (answer) {
+    return (
+      <div className="Statement">
+        <Row>
+          {getCorrectText()}
+        </Row>
+      </div>
+    )
+  } else if (!end && statement) {
     return (
       <div className="Statement">
         <Row>
           {statement}
-        </Row>
-        <Row>
-          <Button variant="success">Truth</Button>
-          <span>or</span>
-          <Button variant="danger">Lie</Button>
-          <span>?</span>
         </Row>
       </div>
     )

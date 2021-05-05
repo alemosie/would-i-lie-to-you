@@ -1,7 +1,7 @@
 import logo from './wiltyLogo.png';
 import './App.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { statements } from './statements';
 import { Statement } from './Statement';
@@ -28,6 +28,7 @@ const SCORE = {
 
 function App() {
   // Determine whether to show truth or lie (random)
+  const [statementType, setStatementType] = useState(null);
   const getStatementType = () => {
     const index = Math.floor(Math.random() * 2);
     return ['truth', 'lie'][index];
@@ -44,8 +45,6 @@ function App() {
     const statementIndex = Math.floor(Math.random() * possibleStatements.length);
     const statement = possibleStatements[statementIndex];
 
-    // Remove statement from gameplay
-    remainingStatements[player][statementType] = remainingStatements[player][statementType].filter(s => s !== statement);
     return statement;
   }
 
@@ -67,7 +66,11 @@ function App() {
     }
   }
 
-  // Manage scores
+  // Manage answers
+  const [answer, setAnswer] = useState(null);
+  const [correct, setCorrect] = useState(null);
+
+  // Manage score
   const [finalScore, setFinalScore] = useState(SCORE);
   const calculateScore = (ledger) => {
     let score = { ...SCORE };
@@ -91,17 +94,31 @@ function App() {
   // Manage end state
   const [end, setEnd] = useState(false);
 
-  const onNext = () => {
-    // Update ledger
-    // Answer is true (truth) or false (lie)
-    if (player) {
-      const answer = 'truth';
-      const correctAnswer = !statements[player][answer].includes(statement);
+  const handleAnswer = (chosenAnswer) => {
+    // Check to see whether answer was correct
+    setAnswer(chosenAnswer);
+
+    if (player && statement) {
+      // Answer is true (truth) or false (lie)
+      const correctAnswer = statements[player][chosenAnswer].includes(statement);
+      setCorrect(correctAnswer);
+
+      // Remove statement from gameplay
+      remainingStatements[player][statementType] = remainingStatements[player][statementType].filter(s => s !== statement);
+
+      // Update ledger
       LEDGER[player].push(correctAnswer);
     }
 
+  }
+  const onNext = () => {
+    // Reset answer
+    setAnswer(null);
+    setCorrect(null);
+
     // Get next turn's player and statement
     const nextStatementType = getStatementType();
+    setStatementType(nextStatementType);
     const nextPlayer = getPlayer(nextStatementType);
 
     // There's a valid player to continue
@@ -114,6 +131,7 @@ function App() {
 
       // If there's no next player, end the game
     } else {
+      setStatement(null);
       setEnd(true);
       setFinalScore(calculateScore(LEDGER));
 
@@ -140,8 +158,8 @@ function App() {
           </Row>
         </Col>
         <Col md={8}>
-          < Statement statement={statement} end={end} />
-          < Next onNext={onNext} end={end} score={finalScore} />
+          < Statement statement={statement} answer={answer} correct={correct} end={end} />
+          < Next onNext={onNext} statement={statement} answer={answer} handleAnswer={handleAnswer} end={end} score={finalScore} />
         </Col>
       </Container>
     </div>

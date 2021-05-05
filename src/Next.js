@@ -2,7 +2,7 @@ import { Row, Button } from 'react-bootstrap';
 import { useState } from 'react';
 
 export const Next = (props) => {
-  const { onNext, end, score } = props;
+  const { onNext, statement, answer, handleAnswer, end, score } = props;
   const [start, setStart] = useState(true);
   const [reveal, setReveal] = useState(false);
 
@@ -39,6 +39,15 @@ export const Next = (props) => {
           <p>{score.samAndAza}</p>
         </div>
       </div>
+    )
+  } else if (statement && !answer) {
+    return (
+      <Row>
+        <Button variant="success" onClick={() => handleAnswer('truth')}>Truth</Button>
+        <span>or</span>
+        <Button variant="danger" onClick={() => handleAnswer('lie')}>Lie</Button>
+        <span>?</span>
+      </Row>
     )
   } else {
     return (
