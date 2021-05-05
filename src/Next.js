@@ -42,22 +42,21 @@ export const Next = (props) => {
     )
   } else if (statement && !answer) {
     return (
-      <Row>
-        <Button variant="success" onClick={() => handleAnswer('truth')}>Truth</Button>
+      <Row className="ButtonContainer AnswerButtons">
+        <span className="Button Truth" variant="outline" onClick={() => handleAnswer('truth')}>Truth</span>
         <span>or</span>
-        <Button variant="danger" onClick={() => handleAnswer('lie')}>Lie</Button>
+        <span className="Button Lie" variant="outline" onClick={() => handleAnswer('lie')}>Lie</span>
         <span>?</span>
       </Row>
     )
   } else {
     return (
-      <Row>
-        <Button
-          id="Next-button"
-          variant="outline"
+      <Row className="ButtonContainer">
+        <span
+          className="Button Next"
           onClick={onClick}>
           {getButtonText()}
-        </Button>
+        </span>
       </Row>
     )
   }

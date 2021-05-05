@@ -1,6 +1,6 @@
 /* Team Purple: rgb 166 41 158 */
 /* Team Green: rgb 44 208 57 */
-/* Host Turquoise: rgb 72 157 177 */
+/* Host Turquoise: rgb 72 157 177 46 126 128 */
 
 .App {
   text-align: center;
@@ -49,6 +49,7 @@
 
   color: white;
   font-family: 'Oswald', sans-serif;
+  font-weight: 700;
   letter-spacing: 1px;
   font-size: 35px;
 
@@ -86,10 +87,38 @@
   font-weight: 700;
 }
 
-#Next-button {
+.ButtonContainer {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Roboto Mono', monospace;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.Button:hover {
+  cursor: pointer; 
+}
+
+.Truth, .Lie {
+  font-family: 'Oswald', sans-serif;
+  font-size: 40px;
+  color: rgb(72 157 177);
+  margin: 0 16px;
+}
+
+.Truth:hover, .Lie:hover{
+  transform: rotate(-2deg);
+  text-decoration: underline;
+}
+
+.Next {
   font-size: 60px;
 }
 
-#Next-button:hover {
-  color: red;
+.Next:hover {
+  color: rgb(72 157 177);
 }
