@@ -5,17 +5,15 @@ export const Statement = (props) => {
 
   const getCorrectText = () => {
     if (correct) {
-      return 'It was correct!'
+      return 'Correct! 🏆'
     } else if (correct === false) {
-      return 'It was incorrect!'
-    } else {
-      return 'It is null :('
+      return 'Incorrect 😔'
     }
   }
 
   if (answer) {
     return (
-      <div className="Statement">
+      <div className="Statement Answer">
         <Row>
           {getCorrectText()}
         </Row>
