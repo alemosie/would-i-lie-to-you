@@ -81,11 +81,11 @@ function App() {
       const correct = ledger[player].filter(getNumCorrect).length;
       const incorrect = ledger[player].filter(getNumIncorrect).length;
       if (['matt', 'yuan'].includes(player)) {
-        score.mattAndYuan += correct;
-        score.samAndAza += incorrect;
-      } else if (['sam', 'aza'].includes(player)) {
         score.mattAndYuan += incorrect;
         score.samAndAza += correct;
+      } else if (['sam', 'aza'].includes(player)) {
+        score.mattAndYuan += correct;
+        score.samAndAza += incorrect;
       }
     })
     return score;

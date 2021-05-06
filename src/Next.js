@@ -29,12 +29,12 @@ export const Next = (props) => {
 
   if (reveal) {
     return (
-      <div>
-        <div className="Team-score">
+      <div className="TeamScoreContainer">
+        <div className={score.mattAndYuan > score.samAndAza ? 'active Team-1' : 'Team-1'}>
           <p className="Team-score-header">Matt & Yuan</p>
           <p>{score.mattAndYuan}</p>
         </div>
-        <div className="Team-score">
+        <div className={score.mattAndYuan < score.samAndAza ? 'active Team-2' : 'Team-2'}>
           <p className="Team-score-header">Sam & Aza</p>
           <p>{score.samAndAza}</p>
         </div>
