@@ -1,43 +1,51 @@
 
 export const statements = {
-  test: {
-    truth: [
-      "I hiked around Lake Tahoe."
-    ],
-    lie: [
-      "When I was younger, I thought I had developed a secret language with my sister. Years later I discovered that my sister was teaching me Nepali."
-    ]
-  },
   matt: {
     truth: [
-      "For my birthday one year, my Mom gifted me a large fungus.",
-      "My cousins and I once filmed an impromptu music video to a Kesha song.",
-      "I was involved in a lab mishap that resulted in immediate evacuation from the lab and the loss of hundreds of dollars worth of material."
+      "I was gifted a large fungus for my birthday one year.",
+      "I once filmed an impromput Kesha music video with my cousins.",
+      "I was part of a lab mishap that resulted in the loss of hundreds of dollars of material and the lab's immediate evacuation."
     ],
-    lie: ['matt lie 1', 'matt lie 2', 'matt lie 3']
+    lie: [
+      "In 5th grade, I wrote an entire research paper for science class on the jackalope without realizing it was a real animal.",
+      "I once won the caption context of my local newspaper.",
+      "I attended the first and only meeting of the Michigan Alchemy Club."
+    ]
   },
   yuan: {
     truth: [
-      "There was once I went on a trip to Thailand and we missed the train. We ended up getting on it after chasing it on motorbikes and getting the trainmaster to stop it for us.",
-      "There was once i was volunteering at charter house and found a tick on my neck. I decided to heat up a fork on the stove to burn my skin to kill it.",
-      "I was getting a wart removed on the sole of my feet when I literally could feel my flesh being cut away. The doctor said to me: Oh, you shouldn't be feeling pain!"
+      "While in Thailand, I successfully chased down a missed train on a motorbike.",
+      "I once burned a tick off of my neck with a fork.",
+      "In surgery to get a wart removed, the anaesthesia didn't work and I felt my flesh being cut away."
     ],
-    lie: ['yuan lie 1', 'yuan lie 2', 'yuan lie 3']
+    lie: [
+      "While walking near the edge of a cliff, I was picked up off the ground by a gust of wind and blown dangerously close to the edge.",
+      "I once grew a plant over 30 meters (100 feet) long.",
+      "I have an archnemesis at work."
+    ]
   },
   aza: {
     truth: [
-      "I once woke up to having over $15,000 wired to me out of the blue.",
-      "A girl I was really in to stopped talking to me because I had lost too much weight.",
-      "I cruised in one class by writing essays with mostly direct quotes from readings."
+      "I once woke up to having over $15,000 unexpectedly wired to me.",
+      "A woman I was into suddenly stopped talking to me. The reason: I had lost too much weight.",
+      "I passed a class using essays that mostly contained direct quotes from readings."
     ],
-    lie: ['aza lie 1', 'aza lie 2', 'aza lie 3']
+    lie: [
+      "I have a running playlist of songs to which I won't listen anymore due to past relationships.",
+      "While taking photos in a national park at sunset, I discovered two people off in the distance doing something illegal.",
+      "The first time I did karaoke in front of a crowd, I was booed off stage only 20 seconds into the song."
+    ]
   },
   sam: {
     truth: [
       "I once took a hot bath next to a dead horse.",
-      "I once sang backstreet boys karaoke on a river in Tokyo.",
-      "I once drove on a sidewalk to avoid being run over by a bus."
+      "I've sung Backstreet Boys karaoke on a river in Tokyo.",
+      "I narrowly avoided being run over by a bus by driving on the sidewalk."
     ],
-    lie: ['sam lie 1', 'sam lie 2', 'sam lie 3']
+    lie: [
+      "I once took a 5 hour detour on what would have been a 4 hour journey to avoid a toll.",
+      "I have stayed awake for 42 hours straight.",
+      "I recently added a new pillow to my bed pillow system."
+    ]
   }
 }
