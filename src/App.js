@@ -3,7 +3,7 @@ import './App.css';
 
 import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { PLAYERS, statements } from './statements';
+import { PLAYERS, STATEMENTS } from './GAMEPLAY';
 import { Statement } from './Statement';
 import { Next } from './Next';
 
@@ -34,7 +34,7 @@ function App() {
 
   // Manage statements: Start off with all, and slowly chip away
   const [statement, setStatement] = useState(null);
-  const [remainingStatements] = useState(statements);
+  const [remainingStatements] = useState(STATEMENTS);
   const getStatement = (player, statementType) => {
     // Get remaining statements (statements - previousTurns)
     let possibleStatements = remainingStatements[player][statementType];
@@ -104,7 +104,7 @@ function App() {
 
     if (player && statement) {
       // Answer is true (truth) or false (lie)
-      const correctAnswer = statements[player][chosenAnswer].includes(statement);
+      const correctAnswer = STATEMENTS[player][chosenAnswer].includes(statement);
       setCorrect(correctAnswer);
 
       // Remove statement from gameplay

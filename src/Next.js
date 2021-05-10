@@ -1,4 +1,4 @@
-import { Row, Button } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { useState } from 'react';
 
 export const Next = (props) => {

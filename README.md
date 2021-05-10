@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Would I Lie to You?
+
+This app is based on the popular British panel show "Would I Lie to You?" 
+To learn more about the show, visit the [BBC One page](https://www.bbc.co.uk/programmes/b007r3n8).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Preparing for gameplay
 
-In the project directory, you can run:
+### Gather player information and statements
 
-### `npm start`
+1. In `src/GAMEPLAY.js`, add all players to the `PLAYERS` object and their team affiliation (either `team1` or `team2`).
 
-Runs the app in the development mode.\
+The object should look like this:
+
+```
+export const PLAYERS = {
+  'matt': 'team1',
+  'yuan': 'team1',
+  'sam': 'team2',
+  'aza': 'team2'
+};
+```
+
+2. In `src/GAMEPLAY` below the `PLAYERS` object, add the truths and lies for each player in the `STATEMENTS` object. 
+
+The object should look something like this:
+
+```
+export const statements = {
+  matt: {
+    truth: [
+      "I was gifted a large fungus for my birthday one year.",
+      "I once filmed an impromptu Kesha music video."
+    ],
+    lie: [
+      "In 5th grade, I wrote an entire research paper for science class on the jackalope without realizing it was a real animal.",
+      "I once won the caption contest of my local newspaper."
+    ]
+  },
+  yuan: {
+    truth: [
+      "While in Thailand, I successfully chased down a missed train on a motorbike.",
+      "I once burned a tick off of my neck with a fork."
+    ],
+    lie: [
+      "While walking near the edge of a cliff, I was picked up off the ground by a gust of wind and blown dangerously close to the edge.",
+      "I have an archnemesis at work."
+    ]
+  ... (continued for each player)
+```
+
+### Install dependencies
+
+If you've never run a React app before, you'll likely need to install dependencies.
+
+Run `npm install` in the app directory to do so.
+
+## Gamepaly 
+
+## Run the app: `npm start`
+
+`npm start` runs the app locally in development mode.
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The page will reload if you make edits. You will also see any lint errors in the console.

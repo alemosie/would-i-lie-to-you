@@ -6,7 +6,7 @@ export const PLAYERS = {
   'aza': 'team2'
 };
 
-export const statements = {
+export const STATEMENTS = {
   matt: {
     truth: [
       "I was gifted a large fungus for my birthday one year.",
