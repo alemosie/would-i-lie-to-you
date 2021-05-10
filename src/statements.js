@@ -1,14 +1,21 @@
 
+export const PLAYERS = {
+  'matt': 'team1',
+  'yuan': 'team1',
+  'sam': 'team2',
+  'aza': 'team2'
+};
+
 export const statements = {
   matt: {
     truth: [
       "I was gifted a large fungus for my birthday one year.",
-      "I once filmed an impromput Kesha music video with my cousins.",
+      "I once filmed an impromptu Kesha music video.",
       "I was part of a lab mishap that resulted in the loss of hundreds of dollars of material and the lab's immediate evacuation."
     ],
     lie: [
       "In 5th grade, I wrote an entire research paper for science class on the jackalope without realizing it was a real animal.",
-      "I once won the caption context of my local newspaper.",
+      "I once won the caption contest of my local newspaper.",
       "I attended the first and only meeting of the Michigan Alchemy Club."
     ]
   },
@@ -28,7 +35,7 @@ export const statements = {
     truth: [
       "I once woke up to having over $15,000 unexpectedly wired to me.",
       "A woman I was into suddenly stopped talking to me. The reason: I had lost too much weight.",
-      "I passed a class using essays that mostly contained direct quotes from readings."
+      "I passed a class using essays mostly comprised of direct quotes from readings."
     ],
     lie: [
       "I have a running playlist of songs to which I won't listen anymore due to past relationships.",

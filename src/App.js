@@ -1,30 +1,28 @@
 import logo from './wiltyLogo.png';
 import './App.css';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { statements } from './statements';
+import { PLAYERS, statements } from './statements';
 import { Statement } from './Statement';
 import { Next } from './Next';
 
-const MAX_TURNS = 3
-const PLAYERS = {
-  matt: 0,
-  sam: 0,
-  aza: 0,
-  yuan: 0
-}
-const LEDGER = {
-  // true is 1 point for your team, false is 1 point for other team
-  matt: [],
-  sam: [],
-  aza: [],
-  yuan: [],
-}
+// For each player, keep track of whether the other team guessed correctly or incorrectly
+const LEDGER = Object.keys(PLAYERS).reduce((ledger, player) => {
+  return {
+    ...ledger,
+    [player]: [],
+  };
+}, {});
+// Correct answer points are awarded to the other team, since they got it right
+// Incorrect answer points are awarded to your team, since you convinced them of the wrong answer
 const SCORE = {
-  mattAndYuan: 0,
-  samAndAza: 0
+  team1: 0,
+  team2: 0
 }
+// Each player has a max of 3 turns
+const MAX_TURNS = 3
+
 
 function App() {
   // Determine whether to show truth or lie (random)
@@ -54,7 +52,7 @@ function App() {
     return (
       (name !== player) &&
       (remainingStatements[name][statementType].length > 0) &&
-      (PLAYERS[name] < MAX_TURNS)
+      (LEDGER[name].length < MAX_TURNS)
     );
   }
   const getPlayer = (statementType) => {
@@ -78,15 +76,14 @@ function App() {
     const getNumIncorrect = (val) => val === false;
 
     Object.keys(ledger).forEach((player) => {
+      const team = PLAYERS[player];
+      const opposingTeam = team === 'team1' ? 'team2' : 'team1'
       const correct = ledger[player].filter(getNumCorrect).length;
       const incorrect = ledger[player].filter(getNumIncorrect).length;
-      if (['matt', 'yuan'].includes(player)) {
-        score.mattAndYuan += incorrect;
-        score.samAndAza += correct;
-      } else if (['sam', 'aza'].includes(player)) {
-        score.mattAndYuan += correct;
-        score.samAndAza += incorrect;
-      }
+
+      // Correct is for the other team, incorrect is for your team
+      score[team] += incorrect;
+      score[opposingTeam] += correct;
     })
     return score;
   }
@@ -123,7 +120,6 @@ function App() {
 
     // There's a valid player to continue
     if (nextPlayer) {
-      PLAYERS[nextPlayer] += 1;
       setPlayer(nextPlayer);
 
       const nextStatement = getStatement(nextPlayer, nextStatementType);
@@ -143,6 +139,19 @@ function App() {
 
   }
 
+  const getTeamPlayerElements = (team) => {
+    const elements = [];
+    Object.keys(PLAYERS).forEach((p) => {
+      // Capitalize name
+      const name = p.charAt(0).toUpperCase() + p.slice(1)
+      // Create player block
+      if (PLAYERS[p] === team) {
+        elements.push(<div className={player === p ? 'active' : ''}>{name}</div>)
+      }
+    });
+    return elements;
+  }
+
 
   return (
     <div className="App">
@@ -152,8 +161,7 @@ function App() {
       <Container className="Game-container">
         <Col lg={2}>
           <Row className="Players Team-1">
-            <div className={player === 'matt' ? 'active' : ''}>Matt</div>
-            <div className={player === 'yuan' ? 'active' : ''}>Yuan</div>
+            {getTeamPlayerElements('team1')}
           </Row>
         </Col>
         <Col>
@@ -162,8 +170,7 @@ function App() {
         </Col>
         <Col lg={2}>
           <Row className="Players Team-2">
-            <div className={player === 'sam' ? 'active' : ''}>Sam</div>
-            <div className={player === 'aza' ? 'active' : ''}>Aza</div>
+            {getTeamPlayerElements('team2')}
           </Row>
         </Col>
       </Container>
