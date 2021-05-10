@@ -48,9 +48,16 @@ function App() {
 
   // Manage players
   const [player, setPlayer] = useState(null);
+  const [team, setTeam] = useState(null);
   const isValidPlayer = (name, statementType) => {
+    // Player must be from the other team; have remaining statements; and have 
+    // taken fewer than 3 turns to be considered valid
+    const otherTeamPlayers = Object.keys(PLAYERS).filter(p => {
+      return PLAYERS[p] !== team
+    });
+
     return (
-      (name !== player) &&
+      (otherTeamPlayers.includes(name)) &&
       (remainingStatements[name][statementType].length > 0) &&
       (LEDGER[name].length < MAX_TURNS)
     );
@@ -120,6 +127,7 @@ function App() {
 
     // There's a valid player to continue
     if (nextPlayer) {
+      setTeam(PLAYERS[nextPlayer]);
       setPlayer(nextPlayer);
 
       const nextStatement = getStatement(nextPlayer, nextStatementType);
