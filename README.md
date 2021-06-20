@@ -56,7 +56,7 @@ If you've never run a React app before, you'll likely need to install dependenci
 
 Run `npm install` in the app directory to do so.
 
-## Gamepaly 
+## Gameplay 
 
 ## Run the app: `npm start`
 
